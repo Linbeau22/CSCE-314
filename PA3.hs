@@ -109,4 +109,4 @@ bellNum n = length(partitionSet (listOfn n))
 
 -- -- yeti :: Integer -> Integer
 -- yeti x = y
---     where {y = permutate x}
+--     where {y = permutate x}dd
