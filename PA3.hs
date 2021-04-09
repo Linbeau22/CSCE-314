@@ -5,7 +5,8 @@
 
 {-
 Links:
-
+--http://zvon.org/other/haskell/Outputprelude/drop_f.html
+--https://stackoverflow.com/questions/16904427/nested-loop-equivalent
 -}
 
 type Set a = [a]
@@ -41,17 +42,13 @@ setEqual ls1 ls2 = if (subset ls1 ls2) && (subset ls2 ls1) then True else False 
 
 
 
-
-
 --zip' [1,2] [3,4] => [(1,3), (1,4), (2,3), (2,4)]
 -- zip' :: Eq b => [a] -> [b] -> [(a, b)]
 -- zip' [] [] = []
 -- zip' (x:xs) (y:ys) = if null ys then (x, y) : zip' xs ys else (x, y) : zip' [x] ys
 
-setProd :: (Eq ls1, Eq ls2) => Set ls1 -> Set ls2 -> Set (ls1, ls2)
-setProd [] _ = []
-setProd _ [] = []
-setProd (x:xs) ys = map (\y -> (x,y)) ys ++ setProd xs ys
+setProd :: Set a -> Set a -> Set(a, a)
+setProd xs ys = [(x,y) | x <- xs, y <- ys]
 
 partition :: Int -> Set a -> Set(Set a)
 partition _ [] = []
@@ -105,6 +102,7 @@ listOfn n = take n (repeat 1) --gets a list of input length of 1's
 
 bellNum :: Int -> Int
 bellNum n = length(partitionSet (listOfn n))
+
 
 
 -- -- yeti :: Integer -> Integer
